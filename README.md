@@ -1,7 +1,3 @@
-Sure! Here's a detailed and well-structured `README.md` for your GitHub repository that will guide users on how to use your `setup.sh` script to set up their Nillion Verifier Node, including the steps to visit the website and manage the verifier node.
-
----
-
 # Nillion Verifier Node Setup
 
 This repository contains an automated shell script (`setup.sh`) that helps you set up your Nillion Verifier Node effortlessly on an Ubuntu machine.
@@ -149,5 +145,3 @@ Special thanks to the Nillion team for providing the verifier image and document
 ---
 
 By following the above steps, you can quickly set up and manage your Nillion Verifier Node. Let us know if you encounter any issues, and happy verifying!
-
----
