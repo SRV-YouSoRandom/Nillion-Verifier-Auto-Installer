@@ -13,6 +13,12 @@ Before running the script, ensure that:
 
 Follow these steps to set up your Nillion Verifier Node:
 
+### 1. Install Git if not already installed
+
+```bash
+apt install git -y
+```
+
 ### 1. Clone the Repository
 
 ```bash
