@@ -99,45 +99,6 @@ pause_for_user
 print_step "Step 9: Running the Nillion Verifier in detached mode"
 docker run -d --name nillion -v ./nillion/verifier:/var/tmp nillion/verifier:v1.0.1 verify --rpc-endpoint "https://testnet-nillion-rpc.lavenderfive.com"
 
-# Give the verifier a few seconds to start and generate initial logs
-sleep 5
-
-# Step 9: Check if a container named 'nillion' already exists
-if [ $(docker ps -aq -f name=nillion) ]; then
-    print_warning "A container named 'nillion' already exists. Removing it..."
-    docker rm -f nillion
-    print_success "Existing 'nillion' container removed."
-fi
-
-# Step 9: Run the verifier
-print_step "Step 9: Running the Nillion Verifier in detached mode"
-docker run -d --name nillion -v ./nillion/verifier:/var/tmp nillion/verifier:v1.0.1 verify --rpc-endpoint "https://testnet-nillion-rpc.lavenderfive.com"
-
-# Give the verifier a few seconds to start and generate initial logs
-sleep 5
-
-# Step 9.1: Checking if the account is funded
-print_step "Checking if the verifier's account is funded..."
-log_output=$(docker logs nillion 2>&1)
-
-# Check for the specific warning and error messages in the logs
-if echo "$log_output" | grep -q "Is your verifier's account funded" && echo "$log_output" | grep -q "Failed to initialise nillion client"; then
-    print_warning "ERROR: Your verifier's account is not funded!"
-    echo -e "\033[1;31mPlease fund the account ID with at least 0.005 NIL from your Keplr wallet and try again.\033[0m"
-    
-    read -p "Once you have funded the account, press Enter to continue..."
-    
-    # Re-run the verifier after the user has funded the account
-    print_step "Re-running the Nillion Verifier in detached mode"
-    docker restart nillion
-    
-    # Wait a few seconds and check the logs again
-    sleep 5
-    docker logs nillion
-else
-    print_success "Verifier is running successfully!"
-fi
-
 # Step 10: Backup credentials
 print_step "Step 10: Backing up your credentials"
 mkdir -p nillion-backup
