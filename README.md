@@ -16,8 +16,8 @@ Follow these steps to set up your Nillion Verifier Node:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/nillion-verifier-setup.git
-cd nillion-verifier-setup
+git clone https://github.com/SRV-YouSoRandom/Nillion-Verifier-Auto-Installer.git
+cd Nillion-Verifier-Auto-Installer
 ```
 
 ### 2. Make the Script Executable
